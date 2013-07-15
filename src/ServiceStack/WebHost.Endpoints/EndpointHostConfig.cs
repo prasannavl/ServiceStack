@@ -82,7 +82,7 @@ namespace ServiceStack.WebHost.Endpoints
 							"default.aspx",
 							"default.ashx",
 						},
-                        DisableServiceStackVersionHeader = false,
+                        EnableServiceStackVersionHeader = true,
                         GlobalResponseHeaders = new Dictionary<string, string>(),
                         IgnoreFormatsInMetadata = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase),
                         AllowFileExtensions = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase)
@@ -156,7 +156,7 @@ namespace ServiceStack.WebHost.Endpoints
             this.MetadataCustomPath = instance.MetadataCustomPath;
             this.UseCustomMetadataTemplates = instance.UseCustomMetadataTemplates;
             this.EnableAccessRestrictions = instance.EnableAccessRestrictions;
-            this.DisableServiceStackVersionHeader = instance.DisableServiceStackVersionHeader;
+            this.EnableServiceStackVersionHeader = instance.EnableServiceStackVersionHeader;
             this.ServiceEndpointsMetadataConfig = instance.ServiceEndpointsMetadataConfig;
             this.LogFactory = instance.LogFactory;
             this.EnableAccessRestrictions = instance.EnableAccessRestrictions;
@@ -199,7 +199,7 @@ namespace ServiceStack.WebHost.Endpoints
             this.FallbackRestPath = instance.FallbackRestPath;
             this.GlobalResponseHeaders = instance.GlobalResponseHeaders;
 
-            if (!this.DisableServiceStackVersionHeader)
+            if (this.EnableServiceStackVersionHeader)
             {
                 this.GlobalResponseHeaders.Add("X-Powered-By", Env.ServerUserAgent);
             }
@@ -408,7 +408,7 @@ namespace ServiceStack.WebHost.Endpoints
 
         public string ServiceName { get; set; }
         public string DefaultContentType { get; set; }
-        public bool DisableServiceStackVersionHeader { get; set; }
+        public bool EnableServiceStackVersionHeader { get; set; }
         public bool AllowJsonpRequests { get; set; }
         public bool AllowRouteContentTypeExtensions { get; set; }
         public bool DebugMode { get; set; }
