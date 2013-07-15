@@ -21,6 +21,7 @@ namespace ServiceStack.Api.Swagger
         public string Name { get; set; }
     }
 
+    [Restrict]
     [DataContract]
     public class ResourceResponse
     {

@@ -16,6 +16,7 @@ namespace ServiceStack.Api.Swagger
         public string ApiKey { get; set; }
     }
 
+    [Restrict]
     [DataContract]
     public class ResourcesResponse
     {
