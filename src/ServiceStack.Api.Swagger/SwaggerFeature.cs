@@ -15,6 +15,8 @@ namespace ServiceStack.Api.Swagger
 
         public bool UseLowercaseUnderscoreModelPropertyNames { get; set; }
 
+        public string ResourcePath { get; set; }
+
         public void Register(IAppHost appHost)
         {
             if (ResourceFilterPattern != null)
