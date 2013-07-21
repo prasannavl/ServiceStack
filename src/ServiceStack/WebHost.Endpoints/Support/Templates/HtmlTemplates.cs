@@ -40,7 +40,6 @@ namespace ServiceStack.WebHost.Endpoints.Support.Templates
         {
             try
             {
-                //TODO: NET 4.0: Use Path.Combine(params string[] paths) instead.
                 return File.ReadAllText(Path.Combine(EndpointHost.AppHost.VirtualPathProvider.RootDirectory.RealPath + "/" + EndpointHost.Config.MetadataCustomPath, templateName));
             }
             catch (Exception ex)
