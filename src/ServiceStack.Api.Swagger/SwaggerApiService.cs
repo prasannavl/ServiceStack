@@ -12,6 +12,7 @@ using ServiceStack.WebHost.Endpoints;
 
 namespace ServiceStack.Api.Swagger
 {
+    [Restrict(VisibilityTo = EndpointAttributes.None)]
     [DataContract]
     public class ResourceRequest
     {
@@ -21,7 +22,6 @@ namespace ServiceStack.Api.Swagger
         public string Name { get; set; }
     }
 
-    [Restrict]
     [DataContract]
     public class ResourceResponse
     {

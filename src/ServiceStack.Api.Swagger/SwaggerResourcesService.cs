@@ -9,6 +9,7 @@ using ServiceStack.WebHost.Endpoints;
 
 namespace ServiceStack.Api.Swagger
 {
+    [Restrict(VisibilityTo = EndpointAttributes.None)]
     [DataContract]
     public class Resources
     {
@@ -16,12 +17,9 @@ namespace ServiceStack.Api.Swagger
         public string ApiKey { get; set; }
     }
 
-    [Restrict]
     [DataContract]
     public class ResourcesResponse
     {
-        [DataMember(Name = "swaggerVersion")]
-        public string SwaggerVersion { get; set; }
         [DataMember(Name = "apiVersion")]
         public string ApiVersion { get; set; }
         [DataMember(Name = "basePath")]
@@ -45,13 +43,12 @@ namespace ServiceStack.Api.Swagger
         private readonly Regex resourcePathCleanerRegex = new Regex(@"/[^\/\{]*", RegexOptions.Compiled);
         internal static Regex resourceFilterRegex;
 
-        internal const string RESOURCE_PATH = "/resource";
+        internal const string RESOURCE_PATH = "/resources";
 
         public object Get(Resources request)
         {
             var result = new ResourcesResponse
             {
-                SwaggerVersion = "1.1",
                 BasePath = EndpointHost.Config.UseHttpsLinks ? Request.GetParentPathUrl().ToHttps() : Request.GetParentPathUrl(),
                 Apis = new List<RestService>()
             };
