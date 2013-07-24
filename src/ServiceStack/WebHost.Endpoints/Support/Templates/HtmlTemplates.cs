@@ -83,5 +83,16 @@ namespace ServiceStack.WebHost.Endpoints.Support.Templates
                 return streamReader.ReadToEnd();
             }
         }
+
+        public static string Format(string template, params object[] args)
+        {
+            for (int i = 0; i < args.Length; i++)
+            {
+                var currentValue = args[i] ?? String.Empty;
+                template = template.Replace(@"{" + i + "}", currentValue.ToString());
+            }
+            return template;
+        }
+
     }
 }
